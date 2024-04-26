@@ -11,8 +11,21 @@ const startServer = () => {
     })
 
 }
-
 startServer()
+
+// // funcion comrueba conexion base de datos
+// AppDataSource.initialize()
+//     .then(() => {
+//         console.log('Database connected');
+//         app.listen(PORT, () => {
+//             console.log(`server ${PORT} is running`);
+//         })
+
+//     })
+
+//     .catch(error => { console.log(error) })
+
+
 
 
 
