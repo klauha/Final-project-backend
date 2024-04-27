@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { User } from "../user-model";
+import { User } from "../user/User-model";
 
 
 

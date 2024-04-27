@@ -1,6 +1,6 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
-import { Role } from "./Role/role-model";
+import { Role } from "../role/Role-model";
 
 
 

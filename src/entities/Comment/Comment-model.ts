@@ -1,6 +1,6 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
-import { Issue } from "../Issue/Issue-model";
+import { Issue } from "../issue/Issue-model";
 
 
 @Entity("comments")
