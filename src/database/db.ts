@@ -5,6 +5,8 @@ import { Roles1708965513342 } from "./migrations/1714206018455-roles"
 import { Users1714206674698 } from "./migrations/1714206674698-users"
 import { IssueTypes1714208651356 } from "./migrations/1714208651356-issueTypes"
 import { Depataments1714209283374 } from "./migrations/1714209283374-depataments"
+import { Issues1714209683768 } from "./migrations/1714209683768-issues"
+import { Comments1714211501061 } from "./migrations/1714211501061-comments"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -22,7 +24,9 @@ export const AppDataSource = new DataSource({
             Roles1708965513342,
             Users1714206674698,
             IssueTypes1714208651356,
-            Depataments1714209283374
+            Depataments1714209283374,
+            Issues1714209683768,
+            Comments1714211501061
 
         ],
     synchronize: false,
