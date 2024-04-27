@@ -1,6 +1,7 @@
 import "reflect-metadata"
 import "dotenv/config"
 import { DataSource } from "typeorm"
+import { Roles1708965513342 } from "./migrations/1714206018455-roles"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -15,7 +16,7 @@ export const AppDataSource = new DataSource({
         ],
     migrations:
         [
-
+            Roles1708965513342,
         ],
     synchronize: false,
     logging: false,
