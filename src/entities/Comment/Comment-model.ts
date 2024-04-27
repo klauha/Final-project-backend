@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 import { Issue } from "../Issue/Issue-model";
 
 
-@Entity()
+@Entity("comments")
 export class Comment {
 
     @PrimaryGeneratedColumn()

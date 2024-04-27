@@ -5,7 +5,7 @@ import { User } from "../user-model";
 import { Department } from "../Departament/Departament-model";
 import { EstadoDeIncidencia } from "../../database/migrations/1714209683768-issues";
 
-@Entity()
+@Entity("issues")
 export class Issue {
 
     @PrimaryGeneratedColumn()

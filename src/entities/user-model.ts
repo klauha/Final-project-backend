@@ -4,7 +4,7 @@ import { Role } from "./Role/role-model";
 
 
 
-@Entity()
+@Entity("users")
 export class User {
 
     @PrimaryGeneratedColumn()
