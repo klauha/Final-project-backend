@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
 
 @Entity("issues-types")
-export class IssueType {
+export class IssueType extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id!: number;

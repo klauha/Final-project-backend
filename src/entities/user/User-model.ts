@@ -1,11 +1,11 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, BaseEntity } from "typeorm";
 import { Role } from "../role/Role-model";
 
 
 
 @Entity("users")
-export class User {
+export class User extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id!: number;

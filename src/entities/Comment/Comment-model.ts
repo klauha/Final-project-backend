@@ -1,10 +1,10 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity } from "typeorm";
 import { Issue } from "../issue/Issue-model";
 
 
 @Entity("comments")
-export class Comment {
+export class Comment extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id!: number;

@@ -1,13 +1,12 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity } from "typeorm";
 import { IssueType } from "../issueType/IssueType-model";
-
 import { Department } from "../departament/Departament-model";
 import { EstadoDeIncidencia } from "../../database/migrations/1714209683768-issues";
 import { User } from "../user/User-model";
 
 @Entity("issues")
-export class Issue {
+export class Issue extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id!: number;
