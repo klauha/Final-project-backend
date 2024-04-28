@@ -1,16 +1,21 @@
 import { Request, Response } from "express"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import { User } from "../user/User-model";
+import { User } from "../user/User-model"
+
 
 //register
 export const register = async (req: Request, res: Response) => {
     try {
-        const { name, surname, email, password } = req.body;
-
+        const name = req.body.name
+        const surname = req.body.surname
+        const email = req.body.email
+        const password = req.body.password
+       
+        console.log('Request body:', req.body)
         if (!name || !email || !password) {
             return res.status(400).json(
-                { 
+                {
                     success: false,
                     message: "Please enter name, surname, email and password"
                 }
@@ -33,75 +38,71 @@ export const register = async (req: Request, res: Response) => {
                 }
             )
         }
+
         // tratamos la data (encriptamos contraseña)
 
         const passwordEncrypted = bcrypt.hashSync(password, 6)
-
+        console.log('Encrypted password:', passwordEncrypted)
         // guardamos datos del registro
 
         const newUser = await User.create({
+            name: name,
+            surname: surname,
             email: email,
             password: passwordEncrypted,
-            // first_name: firstName,
-            // last_name: lastName
-
         }).save()
-
+        console.log('New user:', newUser)
         res.status(201).json(
             {
                 success: true,
-                message: 'User registered successfully',
+                message: `User ${newUser.name} created successfully`,
                 data: newUser
             }
         )
 
-    } catch (error) {
+    } catch (error:any) {
         res.status(500).json({
             success: false,
-            message: "user can't be registered",
-            error: error
+            message: "Error creating user",
+            error: error.message
         })
     }
 }
 
 export const login = async (req: Request, res: Response) => {
     try {
-        // RECUPERAR INFO
 
         const email = req.body.email;
         const password = req.body.password;
 
-        console.log("123");
-
-
-        // validacion de email password
 
         if (!email || !password) {
             return res.status(400).json({
                 success: false,
-                message: "Email and password are needed",
+                message: "Please enter email and password",
             })
         }
         const user = await User.findOne(
             {
-                where: {
-                    email: email
-                },
+                where: {email: email},
                 relations: {
                     role: true
                 },
                 select: {
                     id: true,
-                    password: true,
+                    name: true,
+                    surname: true,
                     email: true,
+                    password: true,
+                    is_active: true,
                     role: {
                         id: true,
-                        name: true
+                        title: true
                     }
                 }
             }
         )
-        console.log(user);
+
 
         if (!user) {
             return res.status(400).json({
@@ -110,7 +111,7 @@ export const login = async (req: Request, res: Response) => {
             })
         }
         const isValidPassword = bcrypt.compareSync(password, user.password);
-    
+
         if (!isValidPassword) {
             return res.status(400).json({
                 success: false,
@@ -121,32 +122,24 @@ export const login = async (req: Request, res: Response) => {
         const token = jwt.sign(
             {
                 userId: user.id,
-                roleName: user.role.name,
-                username: user.first_name
+                roleName: user.role.id,
+                username: user.name
             },
             process.env.JWT_SECRET as string,
             {
-                expiresIn: "2h"
+                expiresIn: "24h"
             }
-
         )
-
-        console.log(112);
-
-
         res.status(200).json({
             success: true,
-            message: "user logged",
+            message: "Login successful",
             token: token
         })
-
-
-
 
     } catch (error: any) {
         res.status(500).json({
             success: false,
-            message: "user cant be logged",
+            message: "User cant be logged",
             error: error.message
         })
     }

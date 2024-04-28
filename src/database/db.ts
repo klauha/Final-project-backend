@@ -7,6 +7,9 @@ import { IssueTypes1714208651356 } from "./migrations/1714208651356-issueTypes"
 import { Depataments1714209283374 } from "./migrations/1714209283374-depataments"
 import { Issues1714209683768 } from "./migrations/1714209683768-issues"
 import { Comments1714211501061 } from "./migrations/1714211501061-comments"
+import { User } from "../entities/user/User-model"
+import { Role } from "../entities/role/Role-model"
+
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -15,10 +18,7 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USER || "root",
     password: process.env.DB_PASSWORD || "",
     database: process.env.DB_DATABASE || "test",
-    entities:
-        [
-
-        ],
+    entities:[User,Role],
     migrations:
         [
             Roles1708965513342,

@@ -8,8 +8,8 @@ export class Role extends BaseEntity{
     @PrimaryGeneratedColumn()
     id!: number;
     
-    @Column({ name: "name", unique: true})
-    name!: string;
+    @Column({ name: "title", unique: true})
+    title!: string;
 
     @OneToMany(() => User, user => user.role)
     users!: User[];

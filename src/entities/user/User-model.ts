@@ -1,5 +1,5 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, BaseEntity, JoinColumn } from "typeorm";
 import { Role } from "../role/Role-model";
 
 
@@ -22,7 +22,10 @@ export class User extends BaseEntity {
     @Column({ type: "varchar", length: 255 })
     password!: string;
 
+    // @ManyToOne(() => Role, role => role.users)
+    // role_id!: Role;
     @ManyToOne(() => Role, role => role.users)
+    @JoinColumn({ name: 'role_id' })
     role!: Role;
 
     @Column({ type: "boolean", default: true })
