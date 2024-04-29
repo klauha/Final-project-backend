@@ -25,6 +25,11 @@ export class IssueTypes1714208651356 implements MigrationInterface {
                         name: "description",
                         type: "text",
                         isNullable: true,
+                    }, 
+                    {
+                        name: "departmentId",
+                        type: "int",
+                        isNullable: true,
                     },
                     {
                         name: "created_at",

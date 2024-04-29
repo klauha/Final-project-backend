@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
+import { Department } from "../departament/Departament-model";
 
 @Entity("issues-types")
 export class IssueType extends BaseEntity {
@@ -11,6 +12,9 @@ export class IssueType extends BaseEntity {
 
     @Column({ type: "text", nullable: true })
     description!: string;
+
+    @ManyToOne(() => Department, department => department.issueTypes)
+    department!: Department;
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     created_at!: Date;
