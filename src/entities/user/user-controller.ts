@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "./User-model";
+import { log } from "console";
 
 
 // -------------------GET-ALL-USERS-------------------------------------------------------------
@@ -37,17 +38,26 @@ export const getUsers = async (req: Request, res: Response) => {
 // -------------------GET-PROFILE-------------------------------------------------------------
 
 export const getProfile = async (req: Request, res: Response) => {
+    console.log(123);
+    
     try {
-
+        console.log(req.tokenData);
         const userId = req.tokenData.userId;
+console.log(userId);
 
         const profile = await User.findOne(
             {
-                where:
-                {
+                where: {
                     id: userId
+                },
+                select: {
+                    id: true,
+                    name: true,
+                    surname: true,
+                    email: true
+                },
 
-                },select: ["id", "name", "surname", "email", "is_active"]
+
             }
         )
         res.status(200).json({
