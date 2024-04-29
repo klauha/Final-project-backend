@@ -1,5 +1,6 @@
 import { Role } from "../../entities/role/Role-model";
 import { AppDataSource } from "../db";
+import { randomUsersSeedDatabase } from "./seederUser";
 
 const roleSeedDatabase = async () => {
     try {
@@ -31,6 +32,7 @@ const roleSeedDatabase = async () => {
   }
   const launchSeeder = async () => {
     await roleSeedDatabase();
+    await randomUsersSeedDatabase()
    
   }
   

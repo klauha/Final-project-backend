@@ -153,16 +153,12 @@ export const deleteUser = async (req: Request, res: Response)=> {
                 message: "User deletion failed",
             });
         }
+        
         res.status(200).json({
             success: true,
             messagge: "user deleted",
             data: userDeleted
         })
-
-
-
-
-
     } catch (error) {
         res.status(500).json({
             success: false,
