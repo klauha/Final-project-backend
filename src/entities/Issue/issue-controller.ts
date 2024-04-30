@@ -35,7 +35,6 @@ export const createIssue = async (req: Request, res: Response) => {
             }
         )
     } catch (error) {
-        console.log(error);
 
         res.status(500).json(
             {
@@ -46,4 +45,46 @@ export const createIssue = async (req: Request, res: Response) => {
     }
 }
 
-export  updateIssueStatus = async (req: Request, res: Response) => {
+export const deleteIssue = async (req: Request, res: Response) => {
+
+    try {
+        const issueId = parseInt(req.params.id)
+
+        const issueToDelete = await Issue.findOne({
+            where: {
+                id: issueId
+            },
+        })
+
+        if (!issueToDelete) {
+            return res.status(404).json({
+                success: false,
+                message: "Issue not found to delete on DB"
+            })
+        }
+        await Issue.delete(
+            { id: issueId }
+        )
+
+        res.status(201).json(
+            {
+                success: true,
+                message: "Issue deleted successfully"
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "cant delete issue"
+            }
+        )
+    }
+
+
+
+
+
+
+}
