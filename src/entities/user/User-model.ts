@@ -1,6 +1,7 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, BaseEntity, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, BaseEntity, JoinColumn, OneToMany } from "typeorm";
 import { Role } from "../role/Role-model";
+import { Issue } from "../issue/Issue-model";
 
 
 
@@ -27,6 +28,9 @@ export class User extends BaseEntity {
     @ManyToOne(() => Role, role => role.users)
     @JoinColumn({ name: 'role_id' })
     role!: Role;
+
+    @OneToMany(() => Issue, issue => issue.user)
+    users!: Issue[];
 
     @Column({ type: "boolean", default: true })
     is_active!: boolean;

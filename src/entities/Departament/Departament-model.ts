@@ -10,7 +10,7 @@ export class Department extends BaseEntity {
     @Column({ type: "varchar", length: 255, unique: true, nullable: false })
     name!: string;
 
-    @OneToMany(() => IssueType, issueType => issueType.department)
+    @OneToMany(() => IssueType, issueType => issueType.departments)
     issueTypes!: IssueType[];
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })

@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany } from "typeorm";
 import { Department } from "../departament/Departament-model";
+import { Issue } from "../issue/Issue-model";
 
-@Entity("issues-types")
+@Entity("issue-types")
 export class IssueType extends BaseEntity {
 
     @PrimaryGeneratedColumn()
@@ -13,8 +14,11 @@ export class IssueType extends BaseEntity {
     @Column({ type: "text", nullable: true })
     description!: string;
 
-    @ManyToOne(() => Department, department => department.issueTypes)
-    department!: Department;
+    @OneToMany(() => Issue, issue => issue.issue_type)
+    issues!: Issue[];
+
+    @OneToMany(() => Department, department => department.issueTypes)
+    departments!: Department[];
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     created_at!: Date;

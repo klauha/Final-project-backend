@@ -20,13 +20,13 @@ export class Issue extends BaseEntity {
     @Column({ type: "enum", enum: EstadoDeIncidencia, default: EstadoDeIncidencia.ABIERTA, nullable: false })
     status!: EstadoDeIncidencia;
 
-    @ManyToOne(() => IssueType, { nullable: false })
+    @ManyToOne(() => IssueType, issueType => issueType.issues)
     @JoinColumn({ name: "issue_type_id" })
     issue_type!: IssueType;
 
-    @ManyToOne(() => User, { nullable: true })
+    @ManyToOne(() => User, user => user.id)
     @JoinColumn({ name: "user_id" })
-    user_id!: User;
+    user!: User;
 
     @ManyToOne(() => Department, { nullable: true })
     @JoinColumn({ name: "department_id" })
