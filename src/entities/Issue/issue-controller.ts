@@ -44,7 +44,6 @@ export const createIssue = async (req: Request, res: Response) => {
     }
 }
 export const deleteIssue = async (req: Request, res: Response) => {
-
     try {
         const issueId = parseInt(req.params.id)
 
@@ -111,15 +110,12 @@ export const updateIssueStatus = async (req: Request, res: Response) => {
 
         issueToUpdate.status = issueStatus
         await issueToUpdate.save()
-
-
         res.status(200).json(
             {
                 success: true,
                 message: "Issue updated successfully"
             }
         )
-
     } catch (error) {
         res.status(500).json(
             {
@@ -128,11 +124,9 @@ export const updateIssueStatus = async (req: Request, res: Response) => {
             }
         )
     }
-
 }
 
 export const getAllIssues = async (req: Request, res: Response) => {
-
     try {
         const allIssues = await Issue.find(
             {
@@ -172,12 +166,17 @@ export const getMyIssues = async (req: Request, res: Response) => {
                 }
             }, relations: ["user"]
         })
-
+        if (!myIssues || myIssues.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No issues found for this user",
+            })
+        }
 
         res.status(200).json(
             {
                 succes: true,
-                message: "All Issues Retrieved",
+                message: "All Issues retrieved",
                 data: myIssues
             }
         )
@@ -186,6 +185,42 @@ export const getMyIssues = async (req: Request, res: Response) => {
         res.status(500).json({
             success: false,
             message: "Issues can't be retrieved",
+        })
+    }
+}
+
+export const getIssueById = async (req: Request, res: Response) => {
+    try {
+        const userId = req.tokenData.userId
+        const issueById = req.params.id
+
+        const issueFound = await Issue.findOne({
+            where: {
+                id: parseInt(issueById),
+                user: {
+                    id: userId
+                }
+            }, relations: ["user"]
+        })
+
+        if (!issueFound) {
+            return res.status(404).json({
+                success: false,
+                message: "Issue not found",
+            })
+        }
+        res.status(200).json(
+            {
+                succes: true,
+                message: "Issue retrieved",
+                data: issueFound
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Issue can't be retrieved",
         })
     }
 }
