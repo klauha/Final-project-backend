@@ -224,3 +224,40 @@ export const getIssueById = async (req: Request, res: Response) => {
         })
     }
 }
+
+ export const getIssueByStatus = async (req: Request, res: Response) => {
+    try {
+        const userId = req.tokenData.userId
+        const issueStatus = req.params.status
+                
+
+        const issueFound = await Issue.find({
+            where: {
+                user: {
+                    id: userId
+                },
+                status: issueStatus as EstadoDeIncidencia
+            }, relations: ["user"]
+        })
+
+        if (!issueFound) {
+            return res.status(404).json({
+                success: false,
+                message: "Issue not found",
+            })
+        }
+        res.status(200).json(
+            {
+                succes: true,
+                message: "Issue retrieved",
+                data: issueFound
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Issue can't be retrieved",
+        })
+    }
+}
