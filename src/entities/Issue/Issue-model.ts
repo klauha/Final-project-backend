@@ -24,7 +24,10 @@ export class Issue extends BaseEntity {
     @JoinColumn({ name: "issue_type_id" })
     issue_type!: IssueType;
 
-    @ManyToOne(() => User, user => user.id)
+    // @ManyToOne(() => User, user => user.id)
+    // @JoinColumn({ name: "user_id" })
+    // user!: User;
+    @ManyToOne(() => User, user => user.issues)
     @JoinColumn({ name: "user_id" })
     user!: User;
 

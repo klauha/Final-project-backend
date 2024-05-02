@@ -25,7 +25,7 @@ export const createIssue = async (req: Request, res: Response) => {
                 id: req.tokenData.userId
             }
 
-        }).save()        
+        }).save()
 
         res.status(201).json(
             {
@@ -95,8 +95,8 @@ export const updateIssueStatus = async (req: Request, res: Response) => {
         if (!issueToUpdate) {
             return res.status(404).json(
                 {
-                success: false,
-                message: "Issue not found"
+                    success: false,
+                    message: "Issue not found"
                 }
             )
         }
@@ -129,4 +129,63 @@ export const updateIssueStatus = async (req: Request, res: Response) => {
         )
     }
 
+}
+
+export const getAllIssues = async (req: Request, res: Response) => {
+
+    try {
+        const allIssues = await Issue.find(
+            {
+                select: ["id", "title", "status", "description", "issue_type", "department"],
+                relations: ["user"]
+            })
+
+        if (!allIssues || allIssues.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Issues not found"
+            })
+        }
+
+        res.status(200).json(
+            {
+                succes: true,
+                message: "All Issues Retrieved",
+                data: allIssues
+            }
+        )
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Issues can't be retrieved",
+        })
+    }
+}
+
+export const getMyIssues = async (req: Request, res: Response) => {
+    try {
+        const userId = req.tokenData.userId
+        const myIssues = await Issue.find({
+            where: {
+                user: {
+                    id: userId
+                }
+            }, relations: ["user"]
+        })
+
+
+        res.status(200).json(
+            {
+                succes: true,
+                message: "All Issues Retrieved",
+                data: myIssues
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Issues can't be retrieved",
+        })
+    }
 }

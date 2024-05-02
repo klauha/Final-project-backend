@@ -30,7 +30,7 @@ export class User extends BaseEntity {
     role!: Role;
 
     @OneToMany(() => Issue, issue => issue.user)
-    users!: Issue[];
+    issues!: Issue[];
 
     @Column({ type: "boolean", default: true })
     is_active!: boolean;
