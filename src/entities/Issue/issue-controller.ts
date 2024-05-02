@@ -1,14 +1,12 @@
 import { Request, Response } from "express";
 import { Issue } from "./Issue-model";
 import { EstadoDeIncidencia } from "../../database/migrations/1714209683768-issues";
-import { IssueType } from "../issueType/IssueType-model";
-import { Department } from "../departament/Departament-model";
 
 export const createIssue = async (req: Request, res: Response) => {
     try {
-        const { title, issueTypeId, departmentId, description, userId } = req.body
+        const { title, issueTypeId, departmentId, description } = req.body
 
-        if (!title || !issueTypeId || !departmentId || !userId) {
+        if (!title || !issueTypeId || !departmentId) {
             return res.status(400).json(
                 {
                     success: false,
@@ -16,7 +14,8 @@ export const createIssue = async (req: Request, res: Response) => {
                 }
             )
         }
-        const newIssue = Issue.create({
+
+        const newIssue = await Issue.create({
             title,
             description,
             issue_type: issueTypeId,
@@ -26,7 +25,7 @@ export const createIssue = async (req: Request, res: Response) => {
                 id: req.tokenData.userId
             }
 
-        })
+        }).save()        
 
         res.status(201).json(
             {
@@ -44,7 +43,6 @@ export const createIssue = async (req: Request, res: Response) => {
         )
     }
 }
-
 export const deleteIssue = async (req: Request, res: Response) => {
 
     try {
@@ -81,10 +79,54 @@ export const deleteIssue = async (req: Request, res: Response) => {
             }
         )
     }
+}
+
+export const updateIssueStatus = async (req: Request, res: Response) => {
+    try {
+        const issueId = parseInt(req.params.id)
+        const issueStatus = req.body.issueStatus
+
+        const issueToUpdate = await Issue.findOne({
+            where: {
+                id: issueId
+            },
+        })
+
+        if (!issueToUpdate) {
+            return res.status(404).json(
+                {
+                success: false,
+                message: "Issue not found"
+                }
+            )
+        }
+        if (!(issueStatus in EstadoDeIncidencia)) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: "Issue status not valid"
+                }
+            )
+        }
+
+        issueToUpdate.status = issueStatus
+        await issueToUpdate.save()
 
 
+        res.status(200).json(
+            {
+                success: true,
+                message: "Issue updated successfully"
+            }
+        )
 
-
-
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "cant update issue"
+            }
+        )
+    }
 
 }
