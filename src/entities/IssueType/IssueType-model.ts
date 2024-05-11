@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 import { Department } from "../departament/Departament-model";
 import { Issue } from "../issue/Issue-model";
 
-@Entity("issue-types")
+@Entity("issue_types")
 export class IssueType extends BaseEntity {
 
     @PrimaryGeneratedColumn()

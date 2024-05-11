@@ -164,7 +164,8 @@ export const getMyIssues = async (req: Request, res: Response) => {
                 user: {
                     id: userId
                 }
-            }, relations: ["user"]
+            }, 
+            relations: ["user", "issue_type", "department"]
         })
         if (!myIssues || myIssues.length === 0) {
             return res.status(404).json({
