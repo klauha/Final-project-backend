@@ -61,7 +61,7 @@ export const getCommentsByIssue = async (req: Request, res: Response) => {
         const issueFound = await Issue.findOne({
             where: {
                 id: issueId
-            }, relations:["user"]
+            }, relations:["user", "comments", "comments.user"]
         })    
         res.status(200).json({
             success: true,

@@ -1,9 +1,10 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity, OneToMany } from "typeorm";
 import { IssueType } from "../issueType/IssueType-model";
 import { Department } from "../departament/Departament-model";
 import { EstadoDeIncidencia } from "../../database/migrations/1714209683768-issues";
 import { User } from "../user/User-model";
+import { Comment } from "../comment/Comment-model";
 
 @Entity("issues")
 export class Issue extends BaseEntity {
@@ -41,5 +42,8 @@ export class Issue extends BaseEntity {
 
     @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" })
     updated_at!: Date;
+
+    @OneToMany(() => Comment, comment => comment.issue)
+    comments!: Comment[];
 }
 
