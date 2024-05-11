@@ -33,10 +33,10 @@ const roleSeedDatabase = async () => {
   }
 }
 const launchSeeder = async () => {
-  // await roleSeedDatabase();
-  // await randomUsersSeedDatabase()
-  // await departamentsSeedDatabase()
-  await issueTypeSeedDatabase()
+  await roleSeedDatabase();
+  await randomUsersSeedDatabase()
+  await departamentsSeedDatabase()
+  // await issueTypeSeedDatabase()
 }
 
 launchSeeder();

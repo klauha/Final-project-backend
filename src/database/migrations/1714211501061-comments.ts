@@ -26,6 +26,11 @@ export class Comments1714211501061 implements MigrationInterface {
                     isNullable: false,
                 },
                 {
+                    name: "user_id",
+                    type: "int",
+                    isNullable: false,
+                },
+                {
                     name: "created_at",
                     type: "timestamp",
                     default: "now()",

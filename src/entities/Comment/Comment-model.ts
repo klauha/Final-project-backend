@@ -1,6 +1,8 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity } from "typeorm";
+
 import { Issue } from "../issue/Issue-model";
+import { User } from "../user/User-model";
 
 
 @Entity("comments")
@@ -15,6 +17,10 @@ export class Comment extends BaseEntity {
     @ManyToOne(() => Issue, { nullable: false })
     @JoinColumn({ name: "issue_id" })
     issue!: Issue;
+
+    @ManyToOne(() => User, { nullable: false })
+    @JoinColumn({ name: "user_id" })
+    user!: User;
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     created_at!: Date;
