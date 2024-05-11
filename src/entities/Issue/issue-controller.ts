@@ -201,7 +201,8 @@ export const getIssueById = async (req: Request, res: Response) => {
                 user: {
                     id: userId
                 }
-            }, relations: ["user"]
+            },
+            relations: ["user", "issue_type", "department"]
         })
 
         if (!issueFound) {
