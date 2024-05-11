@@ -54,3 +54,25 @@ export const createComment = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getCommentsByIssue = async (req: Request, res: Response) => {
+    try {
+        const issueId = parseInt(req.params.id)
+        const issueFound = await Issue.findOne({
+            where: {
+                id: issueId
+            }, relations:["user"]
+        })    
+        res.status(200).json({
+            success: true,
+            message: "Comments retrieved",
+            data: issueFound
+        })
+    } catch (error:any) {
+        res.status(500).json({
+            success: false,
+            message: "Comments can't be retrieved",
+            error:error.message
+        })  
+    }
+}                   
