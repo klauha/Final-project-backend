@@ -7,6 +7,7 @@ export const createComment = async (req: Request, res: Response) => {
     try {
         const userId = req.tokenData.userId
         const { issueId, comment } = req.body
+        
         const issueFound = await Issue.findOne({
             where: {
                 id: issueId,
@@ -22,7 +23,9 @@ export const createComment = async (req: Request, res: Response) => {
                 message: "Issue not found",
             })
         }
+
         if (issueFound.status ==='CERRADA') {
+            
             return res.status(400).json({
                 success: false,
                 message: "Can't add comments to a closed issue",
