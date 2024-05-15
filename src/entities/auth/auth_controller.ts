@@ -122,7 +122,7 @@ export const login = async (req: Request, res: Response) => {
         const token = jwt.sign(
             {
                 userId: user.id,
-                roleName: user.role.id,
+                roleName: user.role.title,
                 username: user.name
             },
             process.env.JWT_SECRET as string,
