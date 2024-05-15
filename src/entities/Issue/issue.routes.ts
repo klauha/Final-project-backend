@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { auth } from "../../middlewares/auth";
-import { createIssue, deleteIssue, getAllIssues, getIssueById, getIssueByStatus, getMyIssues, updateIssueStatus } from "./issue-controller";
+import { createIssue, deleteIssue, getAllIssues, getAllIsuesByUser, getIssueById, getIssueByStatus, getMyIssues, updateIssueStatus } from "./issue-controller";
 
 const router = Router();
 
@@ -11,5 +11,5 @@ router.get('/admin',auth, getAllIssues)
 router.get('/', auth, getMyIssues )
 router.get('/:id', auth, getIssueById )
 router.get('/status/:status', auth, getIssueByStatus)
-
+router.get('/user/:id', auth, getAllIsuesByUser)
 export default router;

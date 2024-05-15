@@ -263,3 +263,26 @@ export const getIssueById = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getAllIsuesByUser = async (req: Request, res: Response) => {
+    try {
+        const userId = parseInt(req.params.id)
+        const issueFound = await Issue.find({
+            where: {
+                user: {
+                    id: userId
+                }
+            }, relations: ["user", "issue_type", "department"]
+        })    
+        res.status(200).json({
+            success: true,
+            message: "Issues retrieved",
+            data: issueFound
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Issues can't be retrieved",
+        })
+    }
+}
