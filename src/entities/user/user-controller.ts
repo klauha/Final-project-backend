@@ -40,9 +40,8 @@ export const getUsers = async (req: Request, res: Response) => {
 export const getProfile = async (req: Request, res: Response) => {
 
     try {
-        console.log(req.tokenData);
-        const userId = req.tokenData.userId;
-
+       
+        const userId = req.tokenData.userId
 
         const profile = await User.findOne(
             {
@@ -165,6 +164,43 @@ export const deleteUser = async (req: Request, res: Response)=> {
             messagge: "User can't be  deleted",
             error: error
     
+        })
+    }
+}
+// -------------------GET USER BY ID-------------------------------------------------------------
+
+export const getUserById = async (req: Request, res: Response) => {
+    try {
+        const userId = parseInt(req.params.id)
+        const user = await User.findOne(        
+            {
+                where: {
+                    id: userId
+                },
+                select: {
+                    id: true,
+                    name: true,
+                    surname: true,
+                    email: true
+                },
+            }
+        )  
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            })
+        }
+        res.status(200).json({
+            success: true,
+            message: "User retrieved successfully",
+            data: user
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "User can't be retrieved",
+            error: error
         })
     }
 }

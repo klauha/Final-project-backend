@@ -10,5 +10,6 @@ router.get('/', auth, getUsers)
 router.get('/profile', auth, getProfile)
 router.put('/profile', auth, updateUserById)
 router.delete('/:id',  auth, isSuperAdmin, deleteUser)
+router.get('/:id', auth, isSuperAdmin, getProfile)
 
 export default router;
