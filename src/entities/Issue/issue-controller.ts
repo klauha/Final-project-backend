@@ -265,7 +265,7 @@ export const getIssueById = async (req: Request, res: Response) => {
 }
 
 export const getAllIsuesByUser = async (req: Request, res: Response) => {
-    try {
+    try {        
         const userId = parseInt(req.params.id)
         const issueFound = await Issue.find({
             where: {
@@ -274,6 +274,7 @@ export const getAllIsuesByUser = async (req: Request, res: Response) => {
                 }
             }, relations: ["user", "issue_type", "department"]
         })    
+
         res.status(200).json({
             success: true,
             message: "Issues retrieved",

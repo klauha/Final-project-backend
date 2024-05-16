@@ -6,7 +6,10 @@ import { log } from "console";
 // -------------------GET-ALL-USERS-------------------------------------------------------------
 export const getUsers = async (req: Request, res: Response) => {
     try {
-        const users = await User.find({ select: ["id", "name", "surname", "email", "is_active"] })
+        const users = await User.find({
+             select: ["id", "name", "surname", "email", "is_active"],
+             relations: ["role"]
+            })
 
         if (users.length === 0) {
             return res.status(404).json(
@@ -170,7 +173,7 @@ export const deleteUser = async (req: Request, res: Response)=> {
 // -------------------GET USER BY ID-------------------------------------------------------------
 
 export const getUserById = async (req: Request, res: Response) => {
-    try {
+    try { 
         const userId = parseInt(req.params.id)
         const user = await User.findOne(        
             {
@@ -183,6 +186,7 @@ export const getUserById = async (req: Request, res: Response) => {
                     surname: true,
                     email: true
                 },
+                relations: ["role"]
             }
         )  
         if (!user) {
