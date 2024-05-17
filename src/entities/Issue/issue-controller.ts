@@ -287,3 +287,36 @@ export const getAllIsuesByUser = async (req: Request, res: Response) => {
         })
     }
 }
+export const getIssueByIdForAdmin = async (req: Request, res: Response) => {
+    try {
+        const issueById = req.params.id
+console.log(issueById);
+
+        const issueFound = await Issue.findOne({
+            where: {
+                id: parseInt(issueById),
+            },
+            relations: ["user", "issue_type", "department"]
+        })
+
+        if (!issueFound) {
+            return res.status(404).json({
+                success: false,
+                message: "Issue not found",
+            })
+        }
+        res.status(200).json(
+            {
+                success: true,
+                message: "Issue retrieved",
+                data: issueFound
+            }
+        )
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Issue can't be retrieved",
+            error: error
+        })
+    }
+}
