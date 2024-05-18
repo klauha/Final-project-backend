@@ -130,8 +130,8 @@ export const getAllIssues = async (req: Request, res: Response) => {
     try {
         const allIssues = await Issue.find(
             {
-                select: ["id", "title", "status", "description", "issue_type", "department"],
-                relations: ["user"]
+                select: ["id", "title", "status", "description", "issue_type", "department", "created_at"],
+                relations: ["user", "department", "issue_type"]
             })
 
         if (!allIssues || allIssues.length === 0) {

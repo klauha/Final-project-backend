@@ -9,7 +9,7 @@ export const issueTypeSeedDatabase = async () => {
       const issueType = new IssueType()
       issueType.name = "Errores en el sitio web"
       issueType.description = "problemas de carga, errores de página, problemas de navegación."
-      issueType.department.id =  1
+    //   issueType.departments = {id: 1}  
       await issueType.save()
 
     //   const issueType2 = new IssueType()
