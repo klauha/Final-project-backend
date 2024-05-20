@@ -12,12 +12,27 @@
 </div>
 
 ## Tabla de Contenidos
+- 🧾[Usuarios demo](#usuarios-bbdd)
 - 🧾[Diseño BBDD](#diseño-bbdd)
 - ⚙️[Instalacion en local](#einstalacion-en-local)
 - 🎯[Endpoints](#endpoints)
 - 💻[Contacto](#contacto)
 - 🪪[Creditos](#creditos)
 
+
+## Usuarios demo
+
+```js
+{
+    user: "superadmin@superadmin.com,
+    password: "123456"
+}
+
+{
+    user: "dani@dani.com,
+    password: "123456"
+}
+```
 
 ## Diseño BBDD
 ![Diseño BBDD](./img/db.png)
