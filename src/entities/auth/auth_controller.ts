@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import { User } from "../user/User-model"
+import { log } from "console"
 
 
 //register
@@ -74,9 +75,12 @@ export const login = async (req: Request, res: Response) => {
 
         const email = req.body.email;
         const password = req.body.password;
-
+        console.log('Request body:', req.body);
+        
 
         if (!email || !password) {
+            console.log(1);
+            
             return res.status(400).json({
                 success: false,
                 message: "Please enter email and password",
@@ -105,6 +109,7 @@ export const login = async (req: Request, res: Response) => {
 
 
         if (!user) {
+            console.log(2);
             return res.status(400).json({
                 success: false,
                 message: "Email o Pasword invalid",
@@ -113,6 +118,8 @@ export const login = async (req: Request, res: Response) => {
         const isValidPassword = bcrypt.compareSync(password, user.password);
 
         if (!isValidPassword) {
+            console.log(3);
+            
             return res.status(400).json({
                 success: false,
                 message: "Email o Pasword invalid",

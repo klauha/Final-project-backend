@@ -36,7 +36,7 @@ const launchSeeder = async () => {
   await roleSeedDatabase();
   await randomUsersSeedDatabase()
   await departamentsSeedDatabase()
-  // await issueTypeSeedDatabase()
+  await issueTypeSeedDatabase()
 }
 
 launchSeeder();

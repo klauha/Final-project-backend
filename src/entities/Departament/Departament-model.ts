@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 import { IssueType } from "../issueType/IssueType-model";
 
 @Entity("departments")
@@ -10,7 +10,7 @@ export class Department extends BaseEntity {
     @Column({ type: "varchar", length: 255, unique: true, nullable: false })
     name!: string;
 
-    @OneToMany(() => IssueType, issueType => issueType.departments)
+    @OneToMany(() => IssueType, issueType => issueType.department)
     issueTypes!: IssueType[];
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany, JoinColumn } from "typeorm";
 import { Department } from "../departament/Departament-model";
 import { Issue } from "../issue/Issue-model";
 
@@ -17,8 +17,12 @@ export class IssueType extends BaseEntity {
     @OneToMany(() => Issue, issue => issue.issue_type)
     issues!: Issue[];
 
-    @OneToMany(() => Department, department => department.issueTypes)
-    departments!: Department[];
+    // @OneToMany(() => Department, department => department.issueTypes)
+    // departments!: Department[];
+
+    @ManyToOne(() => Department, department => department.issueTypes)
+    @JoinColumn({ name: 'departmentId' })
+    department!: Department;
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     created_at!: Date;
