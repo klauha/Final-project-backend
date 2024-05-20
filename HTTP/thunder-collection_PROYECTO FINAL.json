@@ -1,0 +1,298 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "PROYECTO FINAL",
+    "collectionId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+    "dateExported": "2024-05-20T05:43:58.213Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "03941140-d068-445d-9ba2-348cc3563508",
+            "name": "AUTH",
+            "containerId": "",
+            "created": "2024-04-28T05:01:07.351Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "05e0fba9-b3d2-4ad5-b529-9524f6cf86b5",
+            "name": "USERS",
+            "containerId": "",
+            "created": "2024-04-28T14:35:01.049Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "ISSUE",
+            "containerId": "",
+            "created": "2024-04-30T07:44:50.026Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "3c4c5837-9f47-4073-953c-76f38da8f159",
+            "name": "COMMENTS",
+            "containerId": "",
+            "created": "2024-05-02T13:36:11.336Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "5e385751-7852-437f-a05a-16667265e212",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "03941140-d068-445d-9ba2-348cc3563508",
+            "name": "REGISTER",
+            "url": "localhost:4000/api/auth/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-28T05:01:22.908Z",
+            "modified": "2024-05-02T11:02:51.042Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n            \"name\":\"prueba\",\n            \"surname\":\"Alvaro\",\n            \"email\": \"prueba@prueba.com\",\n            \"password\": \"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "3be98eff-5d33-4bb7-8025-d97288edb9b9",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "03941140-d068-445d-9ba2-348cc3563508",
+            "name": "LOGIN",
+            "url": "localhost:4000/api/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-28T14:12:42.527Z",
+            "modified": "2024-05-15T10:56:09.255Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"superadmin@superadmin.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "e46327a2-98ed-4493-88f4-f9210e4ef97e",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "05e0fba9-b3d2-4ad5-b529-9524f6cf86b5",
+            "name": "get all users",
+            "url": "localhost:4000/api/users/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-04-28T14:35:30.767Z",
+            "modified": "2024-04-28T14:36:06.996Z",
+            "headers": []
+        },
+        {
+            "_id": "600a6a36-9f7a-4a3a-bfda-270f15718c55",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "05e0fba9-b3d2-4ad5-b529-9524f6cf86b5",
+            "name": "get profile",
+            "url": "localhost:4000/api/users/profile",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-04-28T15:42:49.070Z",
+            "modified": "2024-04-29T07:35:40.377Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInJvbGVOYW1lIjoxLCJ1c2VybmFtZSI6ImNsYXVkaWEiLCJpYXQiOjE3MTQzMjcyMjYsImV4cCI6MTcxNDQxMzYyNn0.RdxDb64zbHR0rgYEn_NbsyUnEBl7Us8rPrHRtK7rHm0"
+            }
+        },
+        {
+            "_id": "6fa71746-9098-418c-a813-f83035f6c65d",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "05e0fba9-b3d2-4ad5-b529-9524f6cf86b5",
+            "name": "update profile",
+            "url": "localhost:4000/api/users/profile",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-04-29T08:07:03.738Z",
+            "modified": "2024-04-29T08:10:44.800Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"claud\"\n\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInJvbGVOYW1lIjoxLCJ1c2VybmFtZSI6ImNsYXVkaWEiLCJpYXQiOjE3MTQzMjcyMjYsImV4cCI6MTcxNDQxMzYyNn0.RdxDb64zbHR0rgYEn_NbsyUnEBl7Us8rPrHRtK7rHm0"
+            }
+        },
+        {
+            "_id": "abff6913-2e0e-4aa7-b7ff-36ddec9c0849",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "05e0fba9-b3d2-4ad5-b529-9524f6cf86b5",
+            "name": "delete user",
+            "url": "localhost:4000/api/users/1",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-04-29T08:20:56.831Z",
+            "modified": "2024-05-15T10:56:56.345Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMywicm9sZU5hbWUiOjMsInVzZXJuYW1lIjoic3VwZXJhZG1pbiIsImlhdCI6MTcxNTc3MDU2OSwiZXhwIjoxNzE1ODU2OTY5fQ.7al7FvboQK64AZDflnw62xje586j1CAv8PXF_abE9BY"
+            }
+        },
+        {
+            "_id": "11810346-f404-4fd5-b13c-c1ed7c1a87d4",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "create issue",
+            "url": "localhost:4000/api/issues",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-04-30T07:44:59.800Z",
+            "modified": "2024-05-11T14:57:11.744Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"prueba2\",\n  \"issueTypeId\": 1,\n  \"departmentId\": 1,\n  \"description\": \"error pagina web\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMSwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoicHJ1ZWJhIiwiaWF0IjoxNzE1NDM4NTU2LCJleHAiOjE3MTU1MjQ5NTZ9.sAmMonjf_j8uB2e8ATnOLFtHYS6DHtFelRY8dBRsWe0"
+            }
+        },
+        {
+            "_id": "74adba76-38e1-4adb-947f-1f2f22e888b9",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "delete issue",
+            "url": "localhost:4000/api/issues/2",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-04-30T11:06:21.720Z",
+            "modified": "2024-05-15T10:56:25.949Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMywicm9sZU5hbWUiOjMsInVzZXJuYW1lIjoic3VwZXJhZG1pbiIsImlhdCI6MTcxNTc3MDU2OSwiZXhwIjoxNzE1ODU2OTY5fQ.7al7FvboQK64AZDflnw62xje586j1CAv8PXF_abE9BY"
+            }
+        },
+        {
+            "_id": "ea5bcf5d-7a24-40b9-8e8b-4901f6bcc720",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "update issue",
+            "url": "localhost:4000/api/issues/11",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-04-30T12:05:18.943Z",
+            "modified": "2024-05-02T12:59:42.587Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"issueStatus\": \"CERRADA\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMCwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoiY2xhdWRpYSIsImlhdCI6MTcxNDYzMjA5NywiZXhwIjoxNzE0NzE4NDk3fQ.jkWwn71tt3XO8lZHj-xFqgkOg143i2K7eXhn56mTJ0c"
+            }
+        },
+        {
+            "_id": "5d6d01d9-69fe-427a-b756-c420a7763223",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "get all issues",
+            "url": "localhost:4000/api/issues",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-05-02T06:58:07.238Z",
+            "modified": "2024-05-02T11:00:59.428Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMCwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoiY2xhdWRpYSIsImlhdCI6MTcxNDYzMjA5NywiZXhwIjoxNzE0NzE4NDk3fQ.jkWwn71tt3XO8lZHj-xFqgkOg143i2K7eXhn56mTJ0c"
+            }
+        },
+        {
+            "_id": "30cafd39-3d0e-4349-b1f6-89cd42b730c4",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "get my issues",
+            "url": "localhost:4000/api/issues",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-05-02T11:01:17.875Z",
+            "modified": "2024-05-02T11:04:17.775Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMSwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoicHJ1ZWJhIiwiaWF0IjoxNzE0NjQ3Nzg5LCJleHAiOjE3MTQ3MzQxODl9.zqzUNobRP20h5cb_eb6raOKlS6PKg2UeC6GUTtR7QmI"
+            }
+        },
+        {
+            "_id": "46f88cc2-62a1-45c5-bfd1-a1d8dbbfe5fe",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "get issue by id",
+            "url": "localhost:4000/api/issues/9",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-05-02T11:36:02.048Z",
+            "modified": "2024-05-02T11:37:42.770Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMSwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoicHJ1ZWJhIiwiaWF0IjoxNzE0NjQ3Nzg5LCJleHAiOjE3MTQ3MzQxODl9.zqzUNobRP20h5cb_eb6raOKlS6PKg2UeC6GUTtR7QmI"
+            }
+        },
+        {
+            "_id": "61e661e6-dd8a-48d1-a050-e3a0b3bba39e",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "a7f6f786-7532-42ec-a50f-6b08473c1172",
+            "name": "get issue by status",
+            "url": "localhost:4000/api/issues/status/CERRADA",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2024-05-02T12:52:03.995Z",
+            "modified": "2024-05-02T12:57:42.874Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMSwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoicHJ1ZWJhIiwiaWF0IjoxNzE0NjQ3Nzg5LCJleHAiOjE3MTQ3MzQxODl9.zqzUNobRP20h5cb_eb6raOKlS6PKg2UeC6GUTtR7QmI"
+            }
+        },
+        {
+            "_id": "fcd00c9e-e9b8-463e-b4fe-6f095e9f167b",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "3c4c5837-9f47-4073-953c-76f38da8f159",
+            "name": "create comment",
+            "url": "localhost:4000/api/comments",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2024-05-02T13:36:30.996Z",
+            "modified": "2024-05-11T15:24:10.498Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"issueId\":\"5\",\n  \"comment\":\"Soy el cuarto comentario de una incidencia\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMSwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoicHJ1ZWJhIiwiaWF0IjoxNzE1NDM4NTU2LCJleHAiOjE3MTU1MjQ5NTZ9.sAmMonjf_j8uB2e8ATnOLFtHYS6DHtFelRY8dBRsWe0"
+            }
+        },
+        {
+            "_id": "593d4bd3-34b7-4f52-8824-9183a9cf541b",
+            "colId": "d2ae133f-c5f1-4906-93b1-63431385844a",
+            "containerId": "3c4c5837-9f47-4073-953c-76f38da8f159",
+            "name": "get comments",
+            "url": "localhost:4000/api/comments/5",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-05-11T15:39:05.089Z",
+            "modified": "2024-05-11T15:52:37.065Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMSwicm9sZU5hbWUiOjEsInVzZXJuYW1lIjoicHJ1ZWJhIiwiaWF0IjoxNzE1NDM4NTU2LCJleHAiOjE3MTU1MjQ5NTZ9.sAmMonjf_j8uB2e8ATnOLFtHYS6DHtFelRY8dBRsWe0"
+            }
+        }
+    ],
+    "ref": "HYikoyP85PMha0tmRv1uWrrmJMVkrDWEpanHMgOWefdz1dsjjoBNoqaL1xEh0L6YapM6YkQtOpU0ot-KUqidvQ"
+}
