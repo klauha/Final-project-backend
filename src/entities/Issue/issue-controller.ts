@@ -290,7 +290,6 @@ export const getAllIsuesByUser = async (req: Request, res: Response) => {
 export const getIssueByIdForAdmin = async (req: Request, res: Response) => {
     try {
         const issueById = req.params.id
-console.log(issueById);
 
         const issueFound = await Issue.findOne({
             where: {

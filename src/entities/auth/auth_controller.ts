@@ -13,7 +13,6 @@ export const register = async (req: Request, res: Response) => {
         const email = req.body.email
         const password = req.body.password
        
-        console.log('Request body:', req.body)
         if (!name || !email || !password) {
             return res.status(400).json(
                 {
@@ -43,7 +42,7 @@ export const register = async (req: Request, res: Response) => {
         // tratamos la data (encriptamos contraseña)
 
         const passwordEncrypted = bcrypt.hashSync(password, 6)
-        console.log('Encrypted password:', passwordEncrypted)
+
         // guardamos datos del registro
 
         const newUser = await User.create({
@@ -52,7 +51,7 @@ export const register = async (req: Request, res: Response) => {
             email: email,
             password: passwordEncrypted,
         }).save()
-        console.log('New user:', newUser)
+
         res.status(201).json(
             {
                 success: true,
@@ -74,13 +73,9 @@ export const login = async (req: Request, res: Response) => {
     try {
 
         const email = req.body.email;
-        const password = req.body.password;
-        console.log('Request body:', req.body);
-        
+        const password = req.body.password;        
 
-        if (!email || !password) {
-            console.log(1);
-            
+        if (!email || !password) {            
             return res.status(400).json({
                 success: false,
                 message: "Please enter email and password",
@@ -109,7 +104,6 @@ export const login = async (req: Request, res: Response) => {
 
 
         if (!user) {
-            console.log(2);
             return res.status(400).json({
                 success: false,
                 message: "Email o Pasword invalid",
@@ -117,9 +111,7 @@ export const login = async (req: Request, res: Response) => {
         }
         const isValidPassword = bcrypt.compareSync(password, user.password);
 
-        if (!isValidPassword) {
-            console.log(3);
-            
+        if (!isValidPassword) {            
             return res.status(400).json({
                 success: false,
                 message: "Email o Pasword invalid",
